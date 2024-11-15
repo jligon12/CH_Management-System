@@ -1,0 +1,32 @@
+<a href="/excursion_add">+ Add Excursion</a>
+<table id="excursions-table">
+    <thead>
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th>
+                
+            </th>
+            <th>
+                
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {{!-- add the columns/attributes for each row in the table --}}
+        {{#each data}}
+        <tr data-value={{this.excursionID}}>
+            <td>{{this.excursionID}}</td>
+            <td>{{this.description}}</td>
+            <td>{{this.price}}</td>
+            <td>{{this.additionalDays}}</td>
+            <td><button onclick="deleteExcursion({{this.excursionID}})">Delete</button></td>
+            <td><button onclick="">Update</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_excursion.js"></script>

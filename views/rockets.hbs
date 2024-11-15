@@ -1,0 +1,35 @@
+<a href="/rocket_add">+ Add Rocket</a>
+<table id="rockets-table">
+    <thead>
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th>
+                
+            </th>
+            <th>
+                
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {{!-- add the columns/attributes for each row in the table --}}
+        {{#each data}}
+        <tr data-value={{this.rocketID}}>
+            <td>{{this.rocketID}}</td>
+            <td>{{this.make}}</td>
+            <td>{{this.model}}</td>
+            <td>{{this.capacity}}</td>
+            <td>{{this.price}}</td>
+            <td>{{this.inventory}}</td>
+            <td>{{this.inventoryAvailable}}</td>
+            <td><button onclick="deleteRocket({{this.rocketID}})">Delete</button></td>
+            <td><button onclick="">Update</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_rocket.js"></script>

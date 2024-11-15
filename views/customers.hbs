@@ -1,0 +1,32 @@
+<a href="/customer_add">+ Add Customer</a>
+<table id="customer-table">
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- print each column as a header --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th>
+            </th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- print the id, name, email and phone number for each row in the table --}}
+        {{#each data}}
+        <tr data-value={{this.customerID}}>
+            <td>{{this.customerID}}</td>
+            <td>{{this.name}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.phoneNum}}</td>
+            <td>Update</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
