@@ -1,12 +1,12 @@
-function deleteOrder_Trip(ordersTripsID) {
+function deleteExcursion(excursionID) {
     let data = {
-        ordersTripsID: ordersTripsID
+        excursionID: excursionID
     };
 
-    function deleteRow(ordersTripsID){
-    let table = document.getElementById("orders_trips-table");
+    function deleteRow(excursionID){
+    let table = document.getElementById("excursions-table");
     for (let i=0, row; row = table.rows[i]; i++){
-        if (table.rows[i].getAttribute("data-value") == ordersTripsID){
+        if (table.rows[i].getAttribute("data-value") == excursionID){
             table.deleteRow(i);
             break;
         }
@@ -14,12 +14,12 @@ function deleteOrder_Trip(ordersTripsID) {
 }
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("DELETE", "/delete-order_trip-ajax", true);
+    xhttp.open("DELETE", "/delete-excursion-ajax", true);
     xhttp.setRequestHeader("Content-type", "application/json");
 
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState == 4 && xhttp.status == 204) {
-            deleteRow(ordersTripsID);
+            deleteRow(excursionID);
         }
         else if (xhttp.readyState == 4 && xhttp.status != 204) {
             console.log("There was an error with the input.")
@@ -28,10 +28,10 @@ function deleteOrder_Trip(ordersTripsID) {
     xhttp.send(JSON.stringify(data));
 }
 
-function deleteRow(ordersTripsID){
-    let table = document.getElementById("orders_trips-table");
+function deleteRow(excursionID){
+    let table = document.getElementById("excursions-table");
     for (let i=0, row; row = table.rows[i]; i++){
-        if (table.rows[i].getAttribute("data-value") == ordersTripsID){
+        if (table.rows[i].getAttribute("data-value") == excursionID){
             table.deleteRow(i);
             break;
         }

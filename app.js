@@ -53,8 +53,24 @@ app.get('/excursion_add', function(req, res)
 
 app.get('/order_add', function(req, res)
     {  
-        res.render('order_add');                  
-    }); 
+        // res.render('order_add');    
+        
+        let query1 = "SELECT * FROM Customers;";    
+        let query2 =  "SELECT * FROM Rockets;";
+        let query3 =  "SELECT * FROM Excursions;";             
+
+        db.pool.query(query1, function(error, rows, fields){    
+
+            let customers = rows;
+
+            db.pool.query(query2, (error, rows, fields) => {
+                let rockets = rows;
+
+                db.pool.query(query3, (error, rows, fields) => {
+                    let excursions = rows;
+
+            res.render('order_add', {customers: customers, rockets: rockets, excursions:excursions});                  
+    })})})}); 
 
 app.get('/order_trip_add', function(req, res)
     {  
@@ -63,7 +79,7 @@ app.get('/order_trip_add', function(req, res)
 
 app.get('/customers', function(req, res)
     {  
-        let query1 = "SELECT * FROM Customers;";               
+        let query1 = "SELECT * FROM Customers;";       
 
         db.pool.query(query1, function(error, rows, fields){    
 
@@ -171,10 +187,10 @@ app.delete('/delete-excursion-ajax/', function(req,res,next){
 
 app.delete('/delete-order_trip-ajax/', function(req,res,next){
     let data = req.body;
-    let order_tripID = parseInt(data.order_tripID);
-    let Orders_Trips = `DELETE FROM Orders_Trips WHERE order_tripID = ?`;
+    let ordersTripsID = parseInt(data.ordersTripsID);
+    let Orders_Trips = `DELETE FROM Orders_Trips WHERE ordersTripsID = ?`;
 
-        db.pool.query(Orders_Trips, [order_tripID], function(error, rows, fields){
+        db.pool.query(Orders_Trips, [ordersTripsID], function(error, rows, fields){
             if (error) {
                 console.log(error);
                 res.sendStatus(400);
