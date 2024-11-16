@@ -1,0 +1,29 @@
+<h1>Add Order</h1>
+    <form id="add-order-form" method="POST" action="/add-order-form" >
+        <label for="input-customerID">customer:</label>
+        <select id="input-customerID" name="input-customerID">
+            <option value=""></option></select
+          ><br>
+        <label for="input-rocketID">rocket:</label>
+        <select id="input-rocketID" name="input-rocketID">
+            <option value=""></option></select
+          ><br>
+        <label for="input-priceRocketRented">priceRocketRented:</label>
+        <input type="number" id="input-priceRocketRented" name="input-priceRocketRented" step="0.01"><br>
+        <label for="input-excursionID">excursion:</label>
+        <select id="input-excursionID" name="input-excursionID">
+            <option value=""></option></select><br>
+        <label for="input-priceExcursionSold">priceExcursionSold:</label>
+        <input type="number" id="input-priceExcursionSold" name="input-priceExcursionSold" step="0.01"><br>
+        <label for="input-orderDate">orderDate:</label>
+        <input type="date" id="input-orderDate" name="input-orderDate"><br>
+        <label for="input-travelDays">travelDays:</label>
+        <input type="number" id="input-travelDays" name="input-travelDays"><br>
+        <label for="input-totalPaid">totalPaid:</label>
+        <input type="number" id="input-totalPaid" name="input-totalPaid" step="0.01"><br>
+        <label for="input-orderStatus">orderStatus:</label>
+        <select id="input-orderStatus" name="input-orderStatus">
+            <option value=""></option></select><br>
+        <input type="submit" value="Add Order" >
+    </form><br>
+    <a href="/orders">Return to Orders</a>

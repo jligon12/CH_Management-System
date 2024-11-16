@@ -1,0 +1,35 @@
+<a href="/order_trip_add">+ Add Order_Trip</a>
+<table id="orders_trips-table">
+    <thead>
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th>
+                
+            </th>
+            <th>
+                
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {{!-- add the columns/attributes for each row in the table --}}
+        {{#each data}}
+        <tr data-value={{this.orderTripID}}>
+            <td>{{this.orderTripID}}</td>
+            <td>{{this.tripID}}</td>
+            <td>{{this.orderID}}</td>
+            <td>{{this.priceTripSold}}</td>
+            <td>{{this.departureDate}}</td>
+            <td>{{this.returnDate}}</td>
+            <td>{{this.totalGuests}}</td>
+            <td><button onclick="deleteOrder_Trip({{this.orderTripID}})">Delete</button></td>
+            <td><button onclick="">Update</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_order_trip.js"></script>
