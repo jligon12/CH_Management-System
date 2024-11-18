@@ -2,10 +2,18 @@
     <form id="add-order_trip-form" method="POST" action="/add-order_trip-form">
     <label for="input-tripID">trip:</label>
     <select id="input-tripID" name="input-tripID">
-        <option value=""></option></select><br>
+        <option value=""></option>
+        {{#each trips}}
+        <option value="{{this.id}}">{{this.tripID}}</option>
+        {{/each}}
+        </select><br>
     <label for="input-orderID">order:</label>
     <select id="input-orderID" name="input-orderID">
-        <option value=""></option></select><br>
+        <option value=""></option>
+        {{#each orders}}
+        <option value="{{this.id}}">{{this.orderID}}</option>
+        {{/each}}
+        </select><br>
     <label for="input-priceTripSold">priceTripSold:</label>
     <input type="number" id="input-priceTripSold" name="input-priceTripSold" step="0.01"><br>
     <label for="input-departureDate">departureDate:</label>

@@ -52,8 +52,7 @@ app.get('/excursion_add', function(req, res)
     }); 
 
 app.get('/order_add', function(req, res)
-    {  
-        // res.render('order_add');    
+    {      
         
         let query1 = "SELECT * FROM Customers;";    
         let query2 =  "SELECT * FROM Rockets;";
@@ -74,8 +73,17 @@ app.get('/order_add', function(req, res)
 
 app.get('/order_trip_add', function(req, res)
     {  
-        res.render('order_trip_add');                  
-    });
+        let query1 = "SELECT * FROM Trips;";    
+        let query2 =  "SELECT * FROM Orders;";
+
+        db.pool.query(query1, function(error, rows, fields){    
+            let trips = rows;
+
+            db.pool.query(query2, (error, rows, fields) => {
+                let orders = rows;
+
+        res.render('order_trip_add', {trips:trips, orders:orders});                  
+    })})});
 
 app.get('/customers', function(req, res)
     {  
@@ -136,6 +144,14 @@ app.get('/orders_trips', function(req, res)
             res.render('orders_trips', {data: rows});                  
         })                                                      
     });
+
+app.get('/customer_update', function(req, res)
+    {
+        let query1 = "SELECT * FROM Customers;";                 
+        db.pool.query(query1, function(error, rows, fields){    
+            let customers = rows;
+        res.render('customer_update', {customers:customers})
+    })})
 
 app.delete('/delete-trip-ajax/', function(req,res,next){
         let data = req.body;
@@ -318,6 +334,26 @@ app.post('/add-order_trip-form', function(req, res)
                          }
                         })
                     })
+
+app.put('/put-customer-ajax', function(req,res,next){
+    let data = req.body;
+    let customerID = parseInt(data.customerID);
+    let name = data.name;
+    let email = data.email;
+    let phoneNum = data.phoneNum;
+// issue with update
+    let query1 = `UPDATE Customers SET name = ?, email = ?, phoneNum = ? WHERE customerID = ?`;
+
+        db.pool.query(query1, [name, email, phoneNum, customerID], function(error, rows, fields){
+            if (error) {
+            console.log(error);
+            res.sendStatus(400);
+            }
+            // else {
+            //     res.sendStatus(201);
+            // }
+        })
+})
 
 // /*
 //     LISTENER
