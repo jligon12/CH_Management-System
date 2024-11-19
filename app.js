@@ -177,6 +177,49 @@ app.get('/trip_update', function(req, res)
         res.render('trip_update', {trips:trips})
     })})
 
+app.get('/order_update', function(req, res)
+    {      
+        
+        let query1 = "SELECT * FROM Customers;";    
+        let query2 =  "SELECT * FROM Rockets;";
+        let query3 =  "SELECT * FROM Excursions;";
+        let query4 =   "SELECT * FROM Orders;";           
+
+        db.pool.query(query1, function(error, rows, fields){    
+
+            let customers = rows;
+
+            db.pool.query(query2, (error, rows, fields) => {
+                let rockets = rows;
+
+                db.pool.query(query3, (error, rows, fields) => {
+                    let excursions = rows;
+
+                    db.pool.query(query4, (error, rows, fields) => {
+                        let orders = rows;
+
+            res.render('order_update', {customers: customers, rockets: rockets, excursions:excursions, orders:orders});                  
+    })})})})});
+
+app.get('/order_trip_update', function(req, res)
+    {      
+        
+        let query1 = "SELECT * FROM Trips;";    
+        let query2 =  "SELECT * FROM Orders;";
+        let query3 =  "SELECT * FROM Orders_Trips;";          
+
+        db.pool.query(query1, function(error, rows, fields){    
+            let trips = rows;
+
+            db.pool.query(query2, (error, rows, fields) => {
+                let orders = rows;
+
+                db.pool.query(query3, (error, rows, fields) => {
+                    let orders_trips = rows;
+
+            res.render('order_trip_update', {trips: trips, orders:orders, orders_trips:orders_trips});                  
+    })})})});
+
 app.delete('/delete-trip-ajax/', function(req,res,next){
         let data = req.body;
         let tripID = parseInt(data.tripID);
@@ -367,7 +410,7 @@ app.put('/put-customer-ajax', function(req,res,next){
     let email = data.email;
     let phoneNum = data.phoneNum;
     console.log(customerID)
-// issue with update
+
     let query1 = `UPDATE Customers SET name = ?, email = ?, phoneNum = ? WHERE customerID = ?`;
 
         db.pool.query(query1, [name, email, phoneNum, customerID], function(error, rows, fields){
@@ -387,7 +430,7 @@ app.put('/put-excursion-ajax', function(req,res,next){
     let description = data.description;
     let price = data.price;
     let additionalDays = data.additionalDays;
-// issue with update
+
     let query1 = `UPDATE Excursions SET description = ?, price = ?, additionalDays = ? WHERE excursionID = ?`;
 
         db.pool.query(query1, [description, price, additionalDays, excursionID], function(error, rows, fields){
@@ -410,7 +453,7 @@ app.put('/put-rocket-ajax', function(req,res,next){
     let price = data.price;
     let inventory = data.inventory;
     let inventoryAvailable = data.inventoryAvailable;
-// issue with update
+
     let query1 = `UPDATE Rockets SET make = ?, model = ?, capacity = ?, price = ?, inventory = ?, inventoryAvailable = ? WHERE rocketID = ?`;
 
         db.pool.query(query1, [make, model, capacity, price, inventory, inventoryAvailable, rocketID], function(error, rows, fields){
@@ -430,10 +473,59 @@ app.put('/put-trip-ajax', function(req,res,next){
     let destination = data.destination;
     let durationDays = data.durationDays;
     let price = data.price;
-// issue with update
+
     let query1 = `UPDATE Trips SET destination = ?, durationDays = ?, price = ? WHERE tripID = ?`;
 
         db.pool.query(query1, [destination, durationDays, price, tripID], function(error, rows, fields){
+            if (error) {
+            console.log(error);
+            res.sendStatus(400);
+            }
+            // else {
+            //     res.sendStatus(201);
+            // }
+        })
+})
+
+app.put('/put-order-ajax', function(req,res,next){
+    let data = req.body;
+    let orderID = parseInt(data.orderID);
+    let customerID = parseInt(data.customerID);
+    let rocketID = parseInt(data.rocketID);
+    let priceRocketRented = parseInt(data.priceRocketRented);
+    let excursionID = parseInt(data.excursionID);
+    let priceExcursionSold = parseInt(data.priceExcursionSold);
+    let orderDate = data.orderDate;
+    let travelDays = parseInt(data.travelDays);
+    let totalPaid = parseInt(data.totalPaid);
+    let orderStatus = data.orderStatus;
+
+    let query1 = `UPDATE Orders SET customerID = ?, rocketID = ?, priceRocketRented = ?, excursionID = ?, priceExcursionSold = ?, orderDate = ?, travelDays = ?, totalPaid = ?, orderStatus = ? WHERE orderID = ?`;
+
+        db.pool.query(query1, [customerID, rocketID, priceRocketRented, excursionID, priceExcursionSold, orderDate, travelDays, totalPaid, orderStatus, orderID], function(error, rows, fields){
+            if (error) {
+            console.log(error);
+            res.sendStatus(400);
+            }
+            // else {
+            //     res.sendStatus(201);
+            // }
+        })
+})
+
+app.put('/put-order_trip-ajax', function(req,res,next){
+    let data = req.body;
+    let ordersTripsID = parseInt(data.ordersTripsID);
+    let tripID = parseInt(data.tripID);
+    let orderID = parseInt(data.orderID);
+    let priceTripSold = parseInt(data.priceTripSold);
+    let departureDate = data.departureDate;
+    let returnDate = data.returnDate;
+    let totalGuests = data.totalGuests;
+
+    let query1 = `UPDATE Orders_Trips SET tripID = ?, orderID = ?, priceTripSold = ?, departureDate = ?, returnDate = ?, totalGuests = ? WHERE ordersTripsID = ?`;
+
+        db.pool.query(query1, [tripID, orderID, priceTripSold, departureDate, returnDate, totalGuests, ordersTripsID], function(error, rows, fields){
             if (error) {
             console.log(error);
             res.sendStatus(400);

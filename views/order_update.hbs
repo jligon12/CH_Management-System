@@ -1,0 +1,66 @@
+<h2>Update Order</h2>
+<form id="update-order-form">
+    
+    <label for="input-order-update">orderID:</label>
+    <select name="input-order-update"  id="input-order-update" >
+        <option value=""></option>
+        {{#each orders}}
+        <option value="{{this.orderID}}">{{this.orderID}}</option>
+        {{/each}}
+        </select><br>
+
+    {{!-- <label for="input-rocket-update">rocketID:</label>
+    <input type="text" name="input-rocket-update" id="input-rocket-update"><br> --}}
+
+    <label for="input-customerID-update">customerID:</label>
+    <select name="input-customerID-update"  id="input-customerID-update" >
+        <option value=""></option>
+        {{#each customers}}
+        <option value="{{this.customerID}}">{{this.customerID}}</option>
+        {{/each}}
+        </select><br>
+
+    <label for="input-rocketID-update">rocketID:</label>
+    <select name="input-rocketID-update"  id="input-rocketID-update" >
+        <option value=""></option>
+        {{#each rockets}}
+        <option value="{{this.rocketID}}">{{this.rocketID}}</option>
+        {{/each}}
+        </select><br>
+
+    <label for="input-priceRocketRented-update">priceRocketRented: </label>
+    <input type="number" name="input-priceRocketRented-update" id="input-priceRocketRented-update"><br>
+
+    <label for="input-excursionID-update">excursionID:</label>
+    <select name="input-excursionID-update"  id="input-excursionID-update" >
+        <option value=""></option>
+        {{#each excursions}}
+        <option value="{{this.excursionID}}">{{this.excursionID}}</option>
+        {{/each}}
+        </select><br>
+
+    <label for="input-priceExcursionSold-update">priceExcursionSold: </label>
+    <input type="number" name="input-priceExcursionSold-update" id="input-priceExcursionSold-update"><br>
+
+    <label for="input-orderDate-update">orderDate: </label>
+    <input type="date" name="input-orderDate-update" id="input-orderDate-update"><br>
+
+    <label for="input-travelDays-update">travelDays: </label>
+    <input type="number" name="input-travelDays-update" id="input-travelDays-update"><br>
+
+    <label for="input-totalPaid-update">totalPaid: </label>
+    <input type="number" name="input-totalPaid-update" id="input-totalPaid-update"><br>
+    
+    <label for="input-orderStatus-update">orderStatus:</label>
+    <select name="input-orderStatus-update"  id="input-orderStatus-update" >
+        <option value=""></option>
+        <option value="incomplete">incomplete</option>
+        <option value="complete">complete</option>
+        <option value="inProgress">inProgress</option>
+        </select><br>
+
+    <input type="submit"><br>
+</form>
+<a href="/orders">Return to Orders</a>
+
+<script src="./js/update_order.js"></script>

@@ -1,4 +1,6 @@
-<a href="/order_add">+ Add Order</a>
+<a href="/order_add">+ Add Order</a> 
+<a href="/order_update">Update Order</a>
+
 <table id="orders-table">
     <thead>
         <tr>
@@ -30,9 +32,7 @@
             <td>{{this.totalPaid}}</td>
             <td>{{this.orderStatus}}</td>
             {{!-- <td><button onclick="deleteTrip({{this.tripID}})">Delete</button></td> --}}
-            <td><button onclick="">Update</button></td>
         </tr>
         {{/each}}
     </tbody>
 </table>
-<script src="./js/delete_trip.js"></script>

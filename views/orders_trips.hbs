@@ -1,4 +1,5 @@
 <a href="/order_trip_add">+ Add Order_Trip</a>
+<a href="/order_trip_update"> Update Order_Trip</a>
 <table id="orders_trips-table">
     <thead>
         <tr>
@@ -27,7 +28,6 @@
             <td>{{this.returnDate}}</td>
             <td>{{this.totalGuests}}</td>
             <td><button onclick="deleteOrder_Trip({{this.ordersTripsID}})">Delete</button></td>
-            <td><button onclick="">Update</button></td>
         </tr>
         {{/each}}
     </tbody>

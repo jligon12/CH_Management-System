@@ -1,0 +1,47 @@
+<h2>Update Order_Trip</h2>
+<form id="update-order_trip-form">
+    
+    <label for="input-ordersTrips-update">ordersTripsID:</label>
+    <select name="input-ordersTrips-update"  id="input-ordersTrips-update" >
+        <option value=""></option>
+        {{#each orders_trips}}
+        <option value="{{this.ordersTripsID}}">{{this.ordersTripsID}}</option>
+        {{/each}}
+        </select><br>
+
+    {{!-- <label for="input-rocket-update">rocketID:</label>
+    <input type="text" name="input-rocket-update" id="input-rocket-update"><br> --}}
+
+    <label for="input-tripID-update">tripID:</label>
+    <select name="input-tripID-update"  id="input-tripID-update" >
+        <option value=""></option>
+        {{#each trips}}
+        <option value="{{this.tripID}}">{{this.tripID}}</option>
+        {{/each}}
+        </select><br>
+
+    <label for="input-orderID-update">orderID:</label>
+    <select name="input-orderID-update"  id="input-orderID-update" >
+        <option value=""></option>
+        {{#each orders}}
+        <option value="{{this.orderID}}">{{this.orderID}}</option>
+        {{/each}}
+        </select><br>
+
+    <label for="input-priceTripSold-update">priceTripSold: </label>
+    <input type="number" name="input-priceTripSold-update" id="input-priceTripSold-update"><br>
+
+    <label for="input-departureDate-update">departureDate: </label>
+    <input type="date" name="input-departureDate-update" id="input-departureDate-update"><br>
+
+    <label for="input-returnDate-update">returnDate: </label>
+    <input type="date" name="input-returnDate-update" id="input-returnDate-update"><br>
+
+    <label for="input-totalGuests-update">totalGuests: </label>
+    <input type="number" name="input-totalGuests-update" id="input-totalGuests-update"><br>
+
+    <input type="submit"><br>
+</form>
+<a href="/orders_trips">Return to Orders</a>
+
+<script src="./js/update_order_trip.js"></script>
