@@ -1,0 +1,38 @@
+<h2>Update Rocket</h2>
+<form id="update-rocket-form">
+    
+    <label for="input-rocket-update">tripID:</label>
+    <select name="input-rocket-update"  id="input-rocket-update" >
+        <option value=""></option>
+        {{#each rockets}}
+        <option value="{{this.rocketID}}">{{this.rocketID}}</option>
+        {{/each}}
+        </select><br>
+
+    {{!-- <label for="input-rocket-update">rocketID:</label>
+    <input type="text" name="input-rocket-update" id="input-rocket-update"><br> --}}
+
+    <label for="input-make-update">make: </label>
+    <input type="text" name="input-make-update" id="input-make-update"><br>
+
+    <label for="input-model-update">model: </label>
+    <input type="text" name="input-model-update" id="input-model-update"><br>
+
+    <label for="input-capacity-update">capacity: </label>
+    <input type="text" name="input-capacity-update" id="input-capacity-update"><br>
+
+    <label for="input-price-update">price: </label>
+    <input type="text" name="input-price-update" id="input-price-update"><br>
+
+    <label for="input-inventory-update">inventory: </label>
+    <input type="number" name="input-inventory-update" id="input-inventory-update"><br>
+    
+    <label for="input-inventoryAvailable-update">inventoryAvailable: </label>
+    <input type="number" name="input-inventoryAvailable-update" id="input-inventoryAvailable-update"><br>
+    
+
+    <input type="submit"><br>
+</form>
+<a href="/rockets">Return to Rockets</a>
+
+<script src="./js/update_rocket.js"></script>

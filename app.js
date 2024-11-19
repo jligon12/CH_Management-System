@@ -161,6 +161,22 @@ app.get('/excursion_update', function(req, res)
         res.render('excursion_update', {excursions:excursions})
     })})
 
+app.get('/rocket_update', function(req, res)
+    {
+        let query1 = "SELECT * FROM Rockets;";                 
+        db.pool.query(query1, function(error, rows, fields){    
+            let rockets = rows;
+        res.render('rocket_update', {rockets:rockets})
+    })})
+
+app.get('/trip_update', function(req, res)
+    {
+        let query1 = "SELECT * FROM Trips;";                 
+        db.pool.query(query1, function(error, rows, fields){    
+            let trips = rows;
+        res.render('trip_update', {trips:trips})
+    })})
+
 app.delete('/delete-trip-ajax/', function(req,res,next){
         let data = req.body;
         let tripID = parseInt(data.tripID);
@@ -309,7 +325,7 @@ app.post('/add-order_trip-form', function(req, res)
             {
                 let data = req.body;
     
-                query1 = `INSERT INTO Orders_Trips (tripID, orderID, priceTripSold, departureDate, returnDate, totalGuests) VALUES ('${data['input-tripID']}', '${data['input-orderID']}', '${data['input-priceTripSold']}'), '${data['input-departureDate']}', '${data['input-returnDate']}', '${data['input-totalGuests']}')`;
+                query1 = `INSERT INTO Orders_Trips (tripID, orderID, priceTripSold, departureDate, returnDate, totalGuests) VALUES ('${data['input-tripID']}', '${data['input-orderID']}', '${data['input-priceTripSold']}', '${data['input-departureDate']}', '${data['input-returnDate']}', '${data['input-totalGuests']}')`;
                 db.pool.query(query1, function(error, rows, fields){
             
                     if (error) {
@@ -328,11 +344,11 @@ app.post('/add-order_trip-form', function(req, res)
                 {
                     let data = req.body;
         
-                    query1 = `INSERT INTO Orders (customerID, rocketID, priceRocketRented, excursionID, priceExcursionSold, orderDate, travelDays, totalPaid, orderStatus) VALUES ('${data['input-customerID']}', '${data['input-rocketID']}', '${data['input-priceRocketRented']}'), '${data['input-excursionID']}', '${data['input-priceExcursionSold']}', '${data['input-orderDate']}', '${data['input-travelDays']}', '${data['input-totalPaid']}', '${data['input-orderStatus']}')`;
+                    query1 = `INSERT INTO Orders (customerID, rocketID, priceRocketRented, excursionID, priceExcursionSold, orderDate, travelDays, totalPaid, orderStatus) VALUES ('${data['input-customerID']}', '${data['input-rocketID']}', '${data['input-priceRocketRented']}', '${data['input-excursionID']}', '${data['input-priceExcursionSold']}', '${data['input-orderDate']}', '${data['input-travelDays']}', '${data['input-totalPaid']}', '${data['input-orderStatus']}')`;
                     db.pool.query(query1, function(error, rows, fields){
                 
                         if (error) {
-        
+                            
                             console.log(error)
                             res.sendStatus(400);
                         }
@@ -350,6 +366,7 @@ app.put('/put-customer-ajax', function(req,res,next){
     let name = data.name;
     let email = data.email;
     let phoneNum = data.phoneNum;
+    console.log(customerID)
 // issue with update
     let query1 = `UPDATE Customers SET name = ?, email = ?, phoneNum = ? WHERE customerID = ?`;
 
@@ -374,6 +391,49 @@ app.put('/put-excursion-ajax', function(req,res,next){
     let query1 = `UPDATE Excursions SET description = ?, price = ?, additionalDays = ? WHERE excursionID = ?`;
 
         db.pool.query(query1, [description, price, additionalDays, excursionID], function(error, rows, fields){
+            if (error) {
+            console.log(error);
+            res.sendStatus(400);
+            }
+            // else {
+            //     res.sendStatus(201);
+            // }
+        })
+})
+
+app.put('/put-rocket-ajax', function(req,res,next){
+    let data = req.body;
+    let rocketID = parseInt(data.rocketID);
+    let make = data.make;
+    let model = data.model;
+    let capacity = data.capacity;
+    let price = data.price;
+    let inventory = data.inventory;
+    let inventoryAvailable = data.inventoryAvailable;
+// issue with update
+    let query1 = `UPDATE Rockets SET make = ?, model = ?, capacity = ?, price = ?, inventory = ?, inventoryAvailable = ? WHERE rocketID = ?`;
+
+        db.pool.query(query1, [make, model, capacity, price, inventory, inventoryAvailable, rocketID], function(error, rows, fields){
+            if (error) {
+            console.log(error);
+            res.sendStatus(400);
+            }
+            // else {
+            //     res.sendStatus(201);
+            // }
+        })
+})
+
+app.put('/put-trip-ajax', function(req,res,next){
+    let data = req.body;
+    let tripID = parseInt(data.tripID);
+    let destination = data.destination;
+    let durationDays = data.durationDays;
+    let price = data.price;
+// issue with update
+    let query1 = `UPDATE Trips SET destination = ?, durationDays = ?, price = ? WHERE tripID = ?`;
+
+        db.pool.query(query1, [destination, durationDays, price, tripID], function(error, rows, fields){
             if (error) {
             console.log(error);
             res.sendStatus(400);

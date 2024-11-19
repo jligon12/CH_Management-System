@@ -1,4 +1,4 @@
-<a href="/trip_add">+ Add Trip</a>
+<a href="/trip_add">+ Add Trip</a> <a href="/trip_update">Update Trip</a>
 <table id="trips-table">
     <thead>
         <tr>
@@ -24,7 +24,6 @@
             <td>{{this.durationDays}}</td>
             <td>{{this.price}}</td>
             <td><button onclick="deleteTrip({{this.tripID}})">Delete</button></td>
-            <td><button onclick="">Update</button></td>
         </tr>
         {{/each}}
     </tbody>

@@ -1,4 +1,4 @@
-<a href="/rocket_add">+ Add Rocket</a>
+<a href="/rocket_add">+ Add Rocket</a> <a href="/rocket_update">Update Rocket</a>
 <table id="rockets-table">
     <thead>
         <tr>
@@ -27,7 +27,6 @@
             <td>{{this.inventory}}</td>
             <td>{{this.inventoryAvailable}}</td>
             <td><button onclick="deleteRocket({{this.rocketID}})">Delete</button></td>
-            <td><button onclick="">Update</button></td>
         </tr>
         {{/each}}
     </tbody>

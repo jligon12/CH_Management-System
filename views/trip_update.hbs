@@ -1,0 +1,29 @@
+<h2>Update Trip</h2>
+<form id="update-trip-form">
+    
+    <label for="input-trip-update">tripID:</label>
+    <select name="input-trip-update"  id="input-trip-update" >
+        <option value=""></option>
+        {{#each trips}}
+        <option value="{{this.tripID}}">{{this.tripID}}</option>
+        {{/each}}
+        </select><br>
+
+    {{!-- <label for="input-trip-update">tripID:</label>
+    <input type="text" name="input-trip-update" id="input-trip-update"><br> --}}
+
+    <label for="input-destination-update">destination: </label>
+    <input type="text" name="input-destination-update" id="input-destination-update"><br>
+    
+    <label for="input-durationDays-update">durationDays: </label>
+    <input type="text" name="input-durationDays-update" id="input-durationDays-update"><br>
+
+    <label for="input-price-update">price: </label>
+    <input type="text" name="input-price-update" id="input-price-update"><br>
+
+    
+    <input type="submit"><br>
+</form>
+<a href="/trips">Return to Trips</a>
+
+<script src="./js/update_trip.js"></script>
