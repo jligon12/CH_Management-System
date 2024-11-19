@@ -1,4 +1,5 @@
 <a href="/excursion_add">+ Add Excursion</a>
+<a href="/excursion_update"> Update Excursion</a>
 <table id="excursions-table">
     <thead>
         <tr>
@@ -24,7 +25,6 @@
             <td>{{this.price}}</td>
             <td>{{this.additionalDays}}</td>
             <td><button onclick="deleteExcursion({{this.excursionID}})">Delete</button></td>
-            <td><button onclick="">Update</button></td>
         </tr>
         {{/each}}
     </tbody>

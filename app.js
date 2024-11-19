@@ -153,6 +153,14 @@ app.get('/customer_update', function(req, res)
         res.render('customer_update', {customers:customers})
     })})
 
+app.get('/excursion_update', function(req, res)
+    {
+        let query1 = "SELECT * FROM Excursions;";                 
+        db.pool.query(query1, function(error, rows, fields){    
+            let excursions = rows;
+        res.render('excursion_update', {excursions:excursions})
+    })})
+
 app.delete('/delete-trip-ajax/', function(req,res,next){
         let data = req.body;
         let tripID = parseInt(data.tripID);
@@ -337,6 +345,7 @@ app.post('/add-order_trip-form', function(req, res)
 
 app.put('/put-customer-ajax', function(req,res,next){
     let data = req.body;
+    // let customerID = data.customerID;
     let customerID = parseInt(data.customerID);
     let name = data.name;
     let email = data.email;
@@ -345,6 +354,26 @@ app.put('/put-customer-ajax', function(req,res,next){
     let query1 = `UPDATE Customers SET name = ?, email = ?, phoneNum = ? WHERE customerID = ?`;
 
         db.pool.query(query1, [name, email, phoneNum, customerID], function(error, rows, fields){
+            if (error) {
+            console.log(error);
+            res.sendStatus(400);
+            }
+            // else {
+            //     res.sendStatus(201);
+            // }
+        })
+})
+
+app.put('/put-excursion-ajax', function(req,res,next){
+    let data = req.body;
+    let excursionID = parseInt(data.excursionID);
+    let description = data.description;
+    let price = data.price;
+    let additionalDays = data.additionalDays;
+// issue with update
+    let query1 = `UPDATE Excursions SET description = ?, price = ?, additionalDays = ? WHERE excursionID = ?`;
+
+        db.pool.query(query1, [description, price, additionalDays, excursionID], function(error, rows, fields){
             if (error) {
             console.log(error);
             res.sendStatus(400);
