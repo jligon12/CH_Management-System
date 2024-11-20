@@ -15,8 +15,6 @@ updateOrderForm.addEventListener("submit", function(e){
     let inputTotalPaid = document.getElementById("input-totalPaid-update");
     let inputOrderStatus = document.getElementById("input-orderStatus-update");
 
-
-
     let orderIDValue = inputOrderID.value;
     let customerIDValue = inputCustomerID.value;
     let rocketIDValue = inputRocketID.value;
@@ -48,7 +46,6 @@ updateOrderForm.addEventListener("submit", function(e){
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             console.log('Success');
-    //         updateRow(xhttp.response, nameValue);
         }
         else if (xhttp.readyState == 4 && xhttp.status != 200) {
             console.log("There was an error with the input.")

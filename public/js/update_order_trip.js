@@ -37,7 +37,6 @@ updateOrderTripForm.addEventListener("submit", function(e){
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             console.log('Success');
-    //         updateRow(xhttp.response, nameValue);
         }
         else if (xhttp.readyState == 4 && xhttp.status != 200) {
             console.log("There was an error with the input.")

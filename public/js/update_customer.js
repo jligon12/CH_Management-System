@@ -19,20 +19,6 @@ updateCustomerForm.addEventListener("submit", function(e){
 //             return;
 //         }
     
-//     if (isNaN(nameValue)) 
-//         {
-//             return;
-//         }
-    
-//     if (isNaN(emailValue)) 
-//         {
-//             return;
-//         }
-    
-//     if (isNaN(phoneNumValue)) 
-//         {
-//             return;
-//         }
     let data = {
         customerID: customerIDValue,
         name: nameValue,
@@ -47,7 +33,6 @@ updateCustomerForm.addEventListener("submit", function(e){
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             console.log('Success');
-    //         updateRow(xhttp.response, nameValue);
         }
         else if (xhttp.readyState == 4 && xhttp.status != 200) {
             console.log("There was an error with the input.")

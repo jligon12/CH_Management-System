@@ -9,16 +9,13 @@
                 {{@key}}
             </th>
             {{/each}}
-            <th>
-                
+            <th> 
             </th>
             <th>
-                
             </th>
         </tr>
     </thead>
     <tbody>
-        {{!-- add the columns/attributes for each row in the table --}}
         {{#each data}}
         <tr data-value={{this.orderID}}>
             <td>{{this.orderID}}</td>
@@ -31,7 +28,6 @@
             <td>{{this.travelDays}}</td>
             <td>{{this.totalPaid}}</td>
             <td>{{this.orderStatus}}</td>
-            {{!-- <td><button onclick="deleteTrip({{this.tripID}})">Delete</button></td> --}}
         </tr>
         {{/each}}
     </tbody>

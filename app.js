@@ -21,7 +21,6 @@ var exphbs = require('express-handlebars');     // Import express-handlebars
 app.engine('.hbs', engine({extname: ".hbs"}));  // Create an instance of the handlebars engine to process templates
 app.set('view engine', '.hbs');                 // Tell express to use the handlebars engine whenever it encounters a *.hbs file.
 
-
 // /*
 //     ROUTES
 // */
@@ -35,7 +34,6 @@ app.get('/trip_add', function(req, res)
         res.render('trip_add');                  
     });      
                         
-
 app.get('/customer_add', function(req, res)
     {  
         res.render('customer_add');                  
@@ -284,8 +282,6 @@ app.delete('/delete-order_trip-ajax/', function(req,res,next){
         }
 )});
 
-
-// FUNCTIONING HTML FORM ADD ROW
 app.post('/add-trip-form', function(req, res) 
     {
         let data = req.body;
@@ -404,7 +400,6 @@ app.post('/add-order_trip-form', function(req, res)
 
 app.put('/put-customer-ajax', function(req,res,next){
     let data = req.body;
-    // let customerID = data.customerID;
     let customerID = parseInt(data.customerID);
     let name = data.name;
     let email = data.email;
@@ -418,9 +413,6 @@ app.put('/put-customer-ajax', function(req,res,next){
             console.log(error);
             res.sendStatus(400);
             }
-            // else {
-            //     res.sendStatus(201);
-            // }
         })
 })
 
@@ -438,9 +430,6 @@ app.put('/put-excursion-ajax', function(req,res,next){
             console.log(error);
             res.sendStatus(400);
             }
-            // else {
-            //     res.sendStatus(201);
-            // }
         })
 })
 
@@ -461,9 +450,6 @@ app.put('/put-rocket-ajax', function(req,res,next){
             console.log(error);
             res.sendStatus(400);
             }
-            // else {
-            //     res.sendStatus(201);
-            // }
         })
 })
 
@@ -481,9 +467,6 @@ app.put('/put-trip-ajax', function(req,res,next){
             console.log(error);
             res.sendStatus(400);
             }
-            // else {
-            //     res.sendStatus(201);
-            // }
         })
 })
 
@@ -507,9 +490,6 @@ app.put('/put-order-ajax', function(req,res,next){
             console.log(error);
             res.sendStatus(400);
             }
-            // else {
-            //     res.sendStatus(201);
-            // }
         })
 })
 
@@ -530,9 +510,6 @@ app.put('/put-order_trip-ajax', function(req,res,next){
             console.log(error);
             res.sendStatus(400);
             }
-            // else {
-            //     res.sendStatus(201);
-            // }
         })
 })
 
